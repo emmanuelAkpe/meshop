@@ -1,13 +1,16 @@
 <p-toast position="top-right"></p-toast>
 <div class="admin-page">
-  <p-card header="Add Category" subheader="You can add or edit category here">
+  <p-card
+    [header]="editmode ? 'Edit Category' : 'Add Category'"
+    subheader="You can add or edit category here"
+  >
     <div class="grid mb-5">
       <div class="col-12">
         <p-toolbar>
           <div class="p-toolbar-group-left"></div>
           <div class="p-toolbar-group-right">
             <p-button
-              label="Create"
+              [label]="editmode ? 'Update' : 'Create'"
               icon="pi pi-plus"
               styleClass="p-button-primary mr-2"
               (click)="onSubmit()"
@@ -15,7 +18,7 @@
             <p-button
               label="Cancel"
               icon="pi pi-arrow-circle-left"
-              routerLink="categories"
+              (click)="Cancel()"
               styleClass="p-button-secondary"
             ></p-button>
           </div>
@@ -53,6 +56,10 @@
                 class="p-error"
                 >Icon is required</small
               >
+            </div>
+            <div class="field col">
+              <label for="color">Color</label><br />
+              <p-colorPicker formControlName="color"></p-colorPicker>
             </div>
           </div>
         </form>

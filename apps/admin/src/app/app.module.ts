@@ -18,8 +18,12 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { CategoriesService } from '@eshop/products';
+import { ConfirmationService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService } from 'primeng/api';
+import { ColorPickerModule } from 'primeng/colorpicker';
+
 const routes: Routes = [
   {
     path: '',
@@ -37,6 +41,10 @@ const routes: Routes = [
         path: 'categories/form',
         component: CategoriesFormComponent,
       },
+      {
+        path: 'categories/form/:id',
+        component: CategoriesFormComponent,
+      },
     ],
   },
 ];
@@ -48,6 +56,8 @@ const UX_MODULE = [
   ButtonModule,
   TableModule,
   ToastModule,
+  ConfirmDialogModule,
+  ColorPickerModule,
 ];
 
 @NgModule({
@@ -68,7 +78,7 @@ const UX_MODULE = [
     ...UX_MODULE,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [CategoriesService, MessageService],
+  providers: [CategoriesService, MessageService, ConfirmationService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
