@@ -23,6 +23,8 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessageService } from 'primeng/api';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { ProductsFormComponent } from './pages/products/products-form/products-form.component';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,18 @@ const routes: Routes = [
       {
         path: 'categories/form/:id',
         component: CategoriesFormComponent,
+      },
+      {
+        path: 'products',
+        component: ProductsListComponent,
+      },
+      {
+        path: 'products/form',
+        component: ProductsFormComponent,
+      },
+      {
+        path: 'categories/form/:id',
+        component: ProductsFormComponent,
       },
     ],
   },
@@ -68,6 +82,8 @@ const UX_MODULE = [
     DashboardComponent,
     CategoriesListComponent,
     CategoriesFormComponent,
+    ProductsFormComponent,
+    ProductsListComponent,
   ],
   imports: [
     BrowserModule,
