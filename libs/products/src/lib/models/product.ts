@@ -4,7 +4,7 @@ export class Product {
   id?: string;
   name?: string;
   description?: string;
-  crichDescription?: string;
+  richDescription?: string;
   image?: string;
   images?: string[];
   brand?: string;

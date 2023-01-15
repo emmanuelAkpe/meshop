@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Product } from '../models/product';
 import { environment } from '@env/environment';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root',
@@ -16,18 +16,18 @@ export class ProductsService {
     return this.http.get<Product[]>(this.apiURLProducts);
   }
 
+  createProduct(productData: FormData): Observable<Product> {
+    return this.http.post<Product>(this.apiURLProducts, productData);
+  }
+
   getProduct(productId: string): Observable<Product> {
     return this.http.get<Product>(`${this.apiURLProducts}/${productId}`);
   }
 
-  createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.apiURLProducts, product);
-  }
-
-  updateProduct(product: Product): Observable<Product> {
+  updateProduct(productData: FormData, productid: string): Observable<Product> {
     return this.http.put<Product>(
-      `${this.apiURLProducts}/${product.id}`,
-      product
+      `${this.apiURLProducts}/${productid}`,
+      productData
     );
   }
 
