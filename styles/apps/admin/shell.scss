@@ -11,13 +11,13 @@
   &-sidebar {
     position: fixed;
     width: 175px;
-    background-color: #0a1d31;
+    background-color: #3bb77e;
     height: 100%;
 
     .logo {
       padding: 20px;
       width: 100%;
-      border-bottom: 1px solid #19487b;
+      border-bottom: 1px solid white;
       img {
         max-width: 100%;
       }
@@ -44,7 +44,7 @@
               float: right;
             }
             &:hover {
-              background-color: #19487b;
+              background-color: rgb(199, 204, 197);
             }
 
             &.active {

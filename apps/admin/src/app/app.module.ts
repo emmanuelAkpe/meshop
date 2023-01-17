@@ -34,7 +34,9 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { TagModule } from 'primeng/tag';
 import { InputMaskModule } from 'primeng/inputmask';
-
+import { FieldsetModule } from 'primeng/fieldset';
+import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 const routes: Routes = [
   {
     path: '',
@@ -80,6 +82,18 @@ const routes: Routes = [
         path: 'users/form/:id',
         component: UsersFormComponent,
       },
+      {
+        path: 'users/:id',
+        component: OrdersDetailComponent,
+      },
+      {
+        path: 'orders',
+        component: OrdersListComponent,
+      },
+      {
+        path: 'orders/:id',
+        component: OrdersDetailComponent,
+      },
     ],
   },
 ];
@@ -100,6 +114,7 @@ const UX_MODULE = [
   EditorModule,
   TagModule,
   InputMaskModule,
+  FieldsetModule,
 ];
 
 @NgModule({
@@ -114,6 +129,8 @@ const UX_MODULE = [
     ProductsListComponent,
     UsersListComponent,
     UsersFormComponent,
+    OrdersListComponent,
+    OrdersDetailComponent,
   ],
   imports: [
     BrowserModule,
