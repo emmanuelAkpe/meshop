@@ -36,6 +36,8 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 import { AppRoutingModule } from './app.routes';
+import { ChartModule } from 'primeng/chart';
+import { BarChartComponent } from './graphs/bar-chart/bar-chart.component';
 
 const UX_MODULE = [
   InputTextModule,
@@ -70,6 +72,7 @@ const UX_MODULE = [
     UsersFormComponent,
     OrdersListComponent,
     OrdersDetailComponent,
+    BarChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ const UX_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    ChartModule,
     ...UX_MODULE,
   ],
   providers: [CategoriesService, MessageService, ConfirmationService],
