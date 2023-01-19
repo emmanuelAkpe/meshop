@@ -1,1 +1,70 @@
-<p>product-list works!</p>
+<nav aria-label="Breadcrumb" class="flex m-5">
+  <ol
+    role="list"
+    class="flex overflow-hidden rounded-lg border border-primary-color"
+  >
+    <li class="flex items-center">
+      <a
+        routerLink=""
+        class="flex h-10 items-center bg-secondary-color px-4 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+          />
+        </svg>
+
+        <span class="ml-1.5 text-xs font-medium"> Home </span>
+      </a>
+    </li>
+
+    <li class="relative flex items-center">
+      <span
+        class="absolute inset-y-0 -left-px h-10 w-4 bg-primary-color [clip-path:_polygon(0_0,_0%_100%,_100%_50%)]"
+      >
+      </span>
+
+      <a
+        routerLink="products"
+        class="flex h-10 items-center bg-white pl-8 pr-4 text-xs font-medium transition hover:text-gray-900"
+      >
+        Products
+      </a>
+    </li>
+  </ol>
+</nav>
+<div class="flex items-start w-screen justify-start w-screen">
+  <div class="md:block flex-[0.3] hidden mx-5 flex items-center justify-center">
+    <h4 class="text-2xl font-bold">Categories</h4>
+    <div class="flex flex-col" *ngFor="let category of categories">
+      <label class="text-gray-700 my-1 flex items-center">
+        <input
+          type="checkbox"
+          class="mr-2 w-4 h-4 focus:ring-2"
+          [id]="category.id"
+          [(ngModel)]="category.checked"
+          (change)="categoryFilter()"
+        />
+        <span>{{ category.name }}</span>
+      </label>
+    </div>
+  </div>
+  <div class="flex-[0.65]">
+    <div
+      class="grid max-w-md gap-10 row-gap-8 w-screen sm:row-gap-3 lg:grid-cols-4 sm:mx-3 xl:max-w-screen-xl"
+    >
+      <div class="" *ngFor="let product of products">
+        <eshop-product-card [product]="product"></eshop-product-card>
+      </div>
+    </div>
+  </div>
+</div>

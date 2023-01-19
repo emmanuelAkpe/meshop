@@ -3,7 +3,9 @@
 >
   <div class="flex items-center justify-around">
     <div class="text-2xl font-semibold flex-1">
-      <img src="/assets/images/logo.png" class="md:w-36 w-24" alt="" />
+      <a routerLink=""
+        ><img src="/assets/images/logo.png" class="md:w-36 w-24" alt=""
+      /></a>
     </div>
 
     <div class="hidden md:block flex-1">
@@ -27,6 +29,12 @@
 
     <div class="flex-1">
       <ul class="flex justify-center items-center gap-6 w-full">
+        <li class="md:flex justify-center items-center mr-3 hidden">
+          <img src="/assets/icons/shop.svg" class="w-7" alt="" />
+          <a routerLink="/products" class="relative"
+            ><span class="md:text-2xl">shop</span>
+          </a>
+        </li>
         <li class="flex justify-center items-center mr-3">
           <img src="/assets/icons/cart4.svg" class="w-7" alt="" />
           <a href="" class="relative"
@@ -82,7 +90,9 @@
       class="md:hidden flex flex-col items-start justify-start text-black bg-primary-color fixed top-0 w-screen min-h-[110vh] p-5 gap-8"
     >
       <div class="flex items-center justify-between w-full p-5">
-        <a href=""><img src="/assets/images/logo.png" class="w-48" alt="" /></a>
+        <a routerLink=""
+          ><img src="/assets/images/logo.png" class="w-48" alt=""
+        /></a>
 
         <div
           (click)="toggleNav()"

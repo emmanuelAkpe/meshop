@@ -12,6 +12,9 @@ import { HeroComponent } from './components/hero/hero.component';
 import { CategoryComponent } from './components/category/category.component';
 import { FooterAdsComponent } from './shared/footer-ads/footer-ads.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { FormsModule } from '@angular/forms';
 
 const Nx = [];
 const routes: Routes = [
@@ -30,11 +33,14 @@ const routes: Routes = [
     CategoryComponent,
     FooterAdsComponent,
     FeaturedProductsComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule,
     UiModule,
     ...Nx,
   ],

@@ -1,0 +1,60 @@
+<div
+  *ngIf="product"
+  class="flex flex-col hover:scale-105 transition duration-500 cursor-pointer bg-white rounded shadow-md border border-secondary-color"
+>
+  <div class="relative w-full h-48">
+    <img
+      [src]="product.image"
+      class="object-contain w-full h-full rounded-t"
+      alt="p-img"
+    />
+  </div>
+  <div
+    class="flex flex-col justify-between flex-grow p-8 border border-t-0 rounded-b"
+  >
+    <div>
+      <div class="text-lg font-semibold">
+        {{ product.name | slice : 0 : 20 }}
+      </div>
+      <p class="text-sm text-gray-900">
+        {{ product.description | slice : 0 : 50 }}...
+      </p>
+      <div class="mt-1 mb-4 mr-1 flex items-center justify-center gap-3">
+        <h4 class="text-2xl font-bold sm:text-3xl">GH₵{{ product.price }}</h4>
+        <div>
+          <a
+            href=""
+            class="flex items-center justify-center rounded-lg border border-secondary-color hover:border-primary-color p-3"
+          >
+            <img alt="" src="/assets/icons/eye.svg" class="mr-2" />
+            <h4>View</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+    <a
+      href="#_"
+      class="inline-flex overflow-hidden text-white bg-primary-color rounded group"
+    >
+      <span
+        class="px-3.5 py-2 text-white bg-secondary-color group-hover:bg-yellow-700 flex items-center justify-center"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+          ></path>
+        </svg>
+      </span>
+      <span class="pl-4 pr-5 py-2.5">Add to cart</span>
+    </a>
+  </div>
+</div>

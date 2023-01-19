@@ -35,7 +35,7 @@ export class HeaderComponent {
     },
     {
       name: 'Shop',
-      link: '',
+      link: '/products',
     },
     {
       name: 'Categories',
