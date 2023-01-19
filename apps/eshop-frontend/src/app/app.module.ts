@@ -9,6 +9,9 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { CategoryComponent } from './components/category/category.component';
+import { FooterAdsComponent } from './shared/footer-ads/footer-ads.component';
+import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 
 const Nx = [];
 const routes: Routes = [
@@ -24,6 +27,9 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     HeroComponent,
+    CategoryComponent,
+    FooterAdsComponent,
+    FeaturedProductsComponent,
   ],
   imports: [
     BrowserModule,
