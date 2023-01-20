@@ -23,7 +23,7 @@
         <h4 class="text-2xl font-bold sm:text-3xl">GH₵{{ product.price }}</h4>
         <div>
           <a
-            href=""
+            [routerLink]="'/products/' + product.id"
             class="flex items-center justify-center rounded-lg border border-secondary-color hover:border-primary-color p-3"
           >
             <img alt="" src="/assets/icons/eye.svg" class="mr-2" />

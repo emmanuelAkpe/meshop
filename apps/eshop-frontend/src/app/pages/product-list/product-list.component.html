@@ -33,17 +33,19 @@
       >
       </span>
 
-      <a
-        routerLink="products"
+      <div
         class="flex h-10 items-center bg-white pl-8 pr-4 text-xs font-medium transition hover:text-gray-900"
       >
-        Products
-      </a>
+        All Products
+      </div>
     </li>
   </ol>
 </nav>
-<div class="flex items-start w-screen justify-start w-screen">
-  <div class="md:block flex-[0.3] hidden mx-5 flex items-center justify-center">
+<div class="flex items-start justify-start w-screen overflow-hidden">
+  <div
+    class="md:block flex-[0.3] hidden mx-5 flex items-center justify-center"
+    *ngIf="!isCategoryPage"
+  >
     <h4 class="text-2xl font-bold">Categories</h4>
     <div class="flex flex-col" *ngFor="let category of categories">
       <label class="text-gray-700 my-1 flex items-center">
@@ -58,13 +60,11 @@
       </label>
     </div>
   </div>
-  <div class="flex-[0.65]">
-    <div
-      class="grid max-w-md gap-10 row-gap-8 w-screen sm:row-gap-3 lg:grid-cols-4 sm:mx-3 xl:max-w-screen-xl"
-    >
-      <div class="" *ngFor="let product of products">
-        <eshop-product-card [product]="product"></eshop-product-card>
-      </div>
+  <div
+    class="grid mx-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-8"
+  >
+    <div class="" *ngFor="let product of products">
+      <eshop-product-card [product]="product"></eshop-product-card>
     </div>
   </div>
 </div>

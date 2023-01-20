@@ -1,0 +1,43 @@
+<div class="grid lg:grid-cols-5 gap-4">
+  <div class="flex lg:flex-col order-last lg:order-none gap-4">
+    <div class="let image of images">
+      <div class="bg-gray-100 rounded-lg overflow-hidden">
+        <img
+          src="image"
+          loading="lazy"
+          alt=""
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div class="lg:col-span-4 bg-gray-100 rounded-lg overflow-hidden relative">
+    <img
+      [src]="selectedImage"
+      loading="lazy"
+      alt=""
+      class="w-full h-full object-cover object-center"
+    />
+
+    <a
+      href="#"
+      class="inline-block bg-white hover:bg-gray-100 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 border text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 absolute right-4 top-4 px-3.5 py-3"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-6 h-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        />
+      </svg>
+    </a>
+  </div>
+</div>

@@ -15,11 +15,15 @@ import { FeaturedProductsComponent } from './components/featured-products/featur
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
+import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
 
 const Nx = [];
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'products/:productid', component: ProductDetailComponent },
+  { path: 'category/:categoryid', component: ProductListComponent },
 ];
 
 @NgModule({
@@ -34,11 +38,13 @@ const routes: Routes = [
     FooterAdsComponent,
     FeaturedProductsComponent,
     ProductCardComponent,
+    ProductDetailComponent,
+    ProductGalleryComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
     HttpClientModule,
     FormsModule,
     UiModule,
