@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CartItem, CartService } from '@eshop/orders';
 import { Product } from '@eshop/products';
 
 @Component({
@@ -8,4 +9,14 @@ import { Product } from '@eshop/products';
 })
 export class ProductCardComponent {
   @Input() product: Product;
+
+  constructor(private cartService: CartService) {}
+
+  addProductToCart() {
+    const cartItem: CartItem = {
+      productId: this.product.id,
+      quantity: 1,
+    };
+    this.cartService.setCartItem(cartItem);
+  }
 }

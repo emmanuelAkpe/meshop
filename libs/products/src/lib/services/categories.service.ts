@@ -20,13 +20,13 @@ export class CategoriesService {
     return this.http.get<Category>(`${this.apiURLCategories}/${categoryId}`);
   }
 
-  createCategory(category: Category): Observable<Category> {
+  createCategory(category: FormData): Observable<Category> {
     return this.http.post<Category>(this.apiURLCategories, category);
   }
 
-  updateCategory(category: Category): Observable<Category> {
+  updateCategory(category: FormData, categoryid: string): Observable<Category> {
     return this.http.put<Category>(
-      `${this.apiURLCategories}/${category.id}`,
+      `${this.apiURLCategories}/${categoryid}`,
       category
     );
   }

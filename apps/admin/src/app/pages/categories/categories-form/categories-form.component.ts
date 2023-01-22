@@ -15,6 +15,7 @@ export class CategoriesFormComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   editmode = false;
+  imageDisplay: string | ArrayBuffer;
   currentCategoryId: string;
 
   constructor(
@@ -26,30 +27,31 @@ export class CategoriesFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      icon: ['', Validators.required],
-      color: ['#fff'],
-    });
-
+    this._initForm();
     this._checkEditMode();
   }
 
+  private _initForm() {
+    this.form = this.formBuilder.group({
+      name: ['', Validators.required],
+      image: ['', Validators.required],
+      color: ['#fff'],
+    });
+  }
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
     }
-    const category: Category = {
-      id: this.currentCategoryId,
-      name: this.categoryForm.name.value,
-      icon: this.categoryForm.icon.value,
-      color: this.categoryForm.color.value,
-    };
+    const categoryFormData = new FormData();
+    Object.keys(this.categoryForm).map((key) => {
+      categoryFormData.append(key, this.categoryForm[key].value);
+    });
+
     if (this.editmode) {
-      this._updateCategory(category);
+      this._updateCategory(categoryFormData);
     } else {
-      this._addCategory(category);
+      this._addCategory(categoryFormData);
     }
   }
 
@@ -57,8 +59,8 @@ export class CategoriesFormComponent implements OnInit {
     this.location.back();
   }
 
-  private _addCategory(category: Category) {
-    this.categoriesService.createCategory(category).subscribe(
+  private _addCategory(categoryData: FormData) {
+    this.categoriesService.createCategory(categoryData).subscribe(
       (category: Category) => {
         this.messageService.add({
           severity: 'success',
@@ -81,28 +83,30 @@ export class CategoriesFormComponent implements OnInit {
     );
   }
 
-  private _updateCategory(category: Category) {
-    this.categoriesService.updateCategory(category).subscribe(
-      () => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Category is updated!',
-        });
-        timer(2000)
-          .toPromise()
-          .then(() => {
-            this.location.back();
+  private _updateCategory(categoryFormData: FormData) {
+    this.categoriesService
+      .updateCategory(categoryFormData, this.currentCategoryId)
+      .subscribe(
+        () => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Category is updated!',
           });
-      },
-      () => {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: 'Category is not updated!',
-        });
-      }
-    );
+          timer(2000)
+            .toPromise()
+            .then(() => {
+              this.location.back();
+            });
+        },
+        () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Category is not updated!',
+          });
+        }
+      );
   }
 
   private _checkEditMode() {
@@ -112,11 +116,26 @@ export class CategoriesFormComponent implements OnInit {
         this.currentCategoryId = params.id;
         this.categoriesService.getCategory(params.id).subscribe((category) => {
           this.categoryForm.name.setValue(category.name);
-          this.categoryForm.icon.setValue(category.icon);
           this.categoryForm.color.setValue(category.color);
+          this.imageDisplay = category.image;
+          this.categoryForm.image.setValidators([]);
+          this.categoryForm.image.updateValueAndValidity();
         });
       }
     });
+  }
+
+  onImageUpload(event) {
+    const file = event.target.files[0];
+    if (file) {
+      this.form.patchValue({ image: file });
+      this.form.get('image').updateValueAndValidity();
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        this.imageDisplay = fileReader.result;
+      };
+      fileReader.readAsDataURL(file);
+    }
   }
 
   get categoryForm() {

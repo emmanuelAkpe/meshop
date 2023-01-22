@@ -142,8 +142,8 @@
 
         <!-- buttons - start -->
         <div class="flex gap-2.5">
-          <a
-            href="#_"
+          <div
+            (click)="addProductToCart()"
             class="inline-flex overflow-hidden text-white bg-primary-color rounded group"
           >
             <span
@@ -165,11 +165,11 @@
               </svg>
             </span>
             <span class="pl-4 pr-5 py-2.5">Add to cart</span>
-          </a>
+          </div>
 
           <a
             href="#"
-            class="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
+            class="inline-block border border-secondary-color hover:bg-secondary-color hover:text-white focus-visible:ring text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
             >Buy now</a
           >
         </div>

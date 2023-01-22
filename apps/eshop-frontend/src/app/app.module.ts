@@ -17,13 +17,18 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { FormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
-
+import { OrdersModule } from '@eshop/orders';
+import { CartIconComponent } from './components/cart-icon/cart-icon.component';
+import { ToastrModule } from 'ngx-toastr';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 const Nx = [];
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'products/:productid', component: ProductDetailComponent },
   { path: 'category/:categoryid', component: ProductListComponent },
+  { path: 'cart', component: CartPageComponent },
 ];
 
 @NgModule({
@@ -40,6 +45,9 @@ const routes: Routes = [
     ProductCardComponent,
     ProductDetailComponent,
     ProductGalleryComponent,
+    CartIconComponent,
+    CartPageComponent,
+    OrderSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,8 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     UiModule,
+    OrdersModule,
+    ToastrModule.forRoot(),
     ...Nx,
   ],
   providers: [],
