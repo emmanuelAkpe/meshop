@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartItem, CartService } from '@eshop/orders';
 import { Product, ProductsService } from '@eshop/products';
-import { throws } from 'assert';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -52,5 +51,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     };
 
     this.cartService.setCartItem(cartItem);
+  }
+
+  increaseQuantity() {
+    this.quantity++;
+    this.addProductToCart();
+  }
+
+  decreaseQuantity() {
+    if (this.quantity > 1) {
+      this.quantity--;
+      this.addProductToCart();
+    }
   }
 }

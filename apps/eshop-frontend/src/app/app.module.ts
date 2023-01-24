@@ -14,7 +14,7 @@ import { FooterAdsComponent } from './shared/footer-ads/footer-ads.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
 import { OrdersModule } from '@eshop/orders';
@@ -22,6 +22,8 @@ import { CartIconComponent } from './components/cart-icon/cart-icon.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { CheckkoutPageComponent } from './pages/checkkout-page/checkkout-page.component';
+import { ThankYouComponent } from './pages/thank-you/thank-you.component';
 const Nx = [];
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'products/:productid', component: ProductDetailComponent },
   { path: 'category/:categoryid', component: ProductListComponent },
   { path: 'cart', component: CartPageComponent },
+  { path: 'checkout', component: CheckkoutPageComponent },
+  { path: 'success', component: ThankYouComponent },
 ];
 
 @NgModule({
@@ -48,6 +52,8 @@ const routes: Routes = [
     CartIconComponent,
     CartPageComponent,
     OrderSummaryComponent,
+    CheckkoutPageComponent,
+    ThankYouComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +64,7 @@ const routes: Routes = [
     UiModule,
     OrdersModule,
     ToastrModule.forRoot(),
+    ReactiveFormsModule,
     ...Nx,
   ],
   providers: [],

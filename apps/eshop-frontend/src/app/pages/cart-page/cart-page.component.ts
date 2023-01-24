@@ -52,4 +52,27 @@ export class CartPageComponent implements OnInit {
       true
     );
   }
+
+  increaseQuantity(cartItem: CartItemDetailed) {
+    cartItem.quantity++;
+    this.cartService.setCartItem(
+      {
+        productId: cartItem.product.id,
+        quantity: cartItem.quantity,
+      },
+      true
+    );
+  }
+  decreaseQuantity(cartItem: CartItemDetailed) {
+    if (cartItem.quantity > 1) {
+      cartItem.quantity--;
+      this.cartService.setCartItem(
+        {
+          productId: cartItem.product.id,
+          quantity: cartItem.quantity,
+        },
+        true
+      );
+    }
+  }
 }

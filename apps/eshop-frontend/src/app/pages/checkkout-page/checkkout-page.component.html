@@ -1,0 +1,251 @@
+<nav aria-label="Breadcrumb" class="flex m-5">
+  <ol
+    role="list"
+    class="flex overflow-hidden rounded-lg border border-primary-color"
+  >
+    <li class="flex items-center">
+      <a
+        routerLink="/cart"
+        class="flex h-10 items-center bg-secondary-color px-4 transition"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-cart4"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+          />
+        </svg>
+
+        <span class="ml-1.5 text-xs font-medium"> cart </span>
+      </a>
+    </li>
+
+    <li class="relative flex items-center">
+      <span
+        class="absolute inset-y-0 -left-px h-10 w-4 bg-primary-color [clip-path:_polygon(0_0,_0%_100%,_100%_50%)]"
+      >
+      </span>
+
+      <div
+        class="flex h-10 items-center bg-white pl-8 pr-4 text-xs font-medium transition hover:text-gray-900"
+      >
+        Checkout
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<section>
+  <h1 class="sr-only">Checkout</h1>
+
+  <div
+    class="grid mx-5 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 place-items-center gap-x-4 md:gap-x-6 gap-y-8"
+  >
+    <div class="py-6 sm:py-8 lg:py-12 bg-gray-100 rounded-lg">
+      <div class="max-w-screen-2xl px-4 md:px-8 mx-auto">
+        <!-- form - start -->
+        <form
+          [formGroup]="checkoutFormGroup"
+          class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto"
+        >
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Name*</label
+            >
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              name="name"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.name.invalid && isSubmitted"
+              class="text-red-900"
+              >Name is required</small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Email*</label
+            >
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.email.invalid && isSubmitted"
+              class="text-red-900"
+              ><span *ngIf="checkoutForm.email.errors.required"
+                >email is required</span
+              >
+              <span *ngIf="checkoutForm.email.errors.email"
+                >email is invalid</span
+              ></small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Phone*</label
+            >
+            <input
+              formControlName="phone"
+              id="phone"
+              type="phone"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.phone.invalid && isSubmitted"
+              class="text-red-900"
+              >phone is required</small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Street*</label
+            >
+            <input
+              formControlName="street"
+              name="street"
+              id="street"
+              type="text"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.street.invalid && isSubmitted"
+              class="text-red-900"
+              >Street is required</small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Apartment*</label
+            >
+            <input
+              formControlName="apartment"
+              name="apartment"
+              id="apartment"
+              type="text"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.apartment.invalid && isSubmitted"
+              class="text-red-900"
+              >Apartment is required</small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >City*</label
+            >
+            <input
+              formControlName="city"
+              name="city"
+              id="city"
+              type="text"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.city.invalid && isSubmitted"
+              class="text-red-900"
+              >City is required</small
+            >
+          </div>
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Closest Landmark*</label
+            >
+            <input
+              formControlName="zip"
+              name="zip"
+              id="zip"
+              type="text"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            />
+            <small
+              *ngIf="checkoutForm.zip.invalid && isSubmitted"
+              class="text-red-900"
+              >Landmark required</small
+            >
+          </div>
+
+          <div>
+            <label
+              for="first-name"
+              class="inline-block text-gray-800 text-sm sm:text-base mb-2"
+              >Select Town*</label
+            >
+
+            <select
+              formControlName="country"
+              id="Country"
+              class="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
+            >
+              <option>Ashaiman</option>
+              <option>Klagon</option>
+              <option>Lashibi</option>
+              <option>Teshie</option>
+              <option>Nungua</option>
+              <option>La</option>
+              <option>Maprobi</option>
+              <option>Nima</option>
+              <option>Osu</option>
+              <option>James Town</option>
+            </select>
+            <small
+              *ngIf="checkoutForm.country.invalid && isSubmitted"
+              class="p-error"
+              >town is required</small
+            >
+          </div>
+        </form>
+        <!-- form - end -->
+        <button
+          (click)="placeOrder()"
+          class="w-full col-span-2 mt-3 inline-flex overflow-hidden text-white bg-primary-color rounded group"
+        >
+          <span
+            class="px-3.5 py-2 text-white bg-secondary-color group-hover:bg-yellow-700 flex items-center justify-center"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+              ></path>
+            </svg>
+          </span>
+          <span class="pl-4 pr-5 py-2.5">Place Order</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
